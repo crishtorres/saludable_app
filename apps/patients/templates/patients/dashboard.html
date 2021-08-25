@@ -49,22 +49,9 @@
   <a class="btn btn-success" href="{% url 'Patients:register_food' %}">Registrar Comida</a>
 {% endif %}
 
-<script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-</script>
+{% block scripts_js %}
+<script src="{% static 'patients/js/dashboard.js' %}"></script>
+{% endblock %}
 
 {% endblock %} {% block styles_css %}
 <link rel="stylesheet" href="{% static 'patients/css/patients.css' %}" />

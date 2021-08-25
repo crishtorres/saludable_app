@@ -39,6 +39,8 @@ pip install -r requirements.txt
 ```bash
 # En linux utilizar python3
 python manage.py makemigrations
+# Para asegurar que crea los modelos 
+python manage.py makemigrations patients
 python manage.py migrate
 python manage.py runserver
 ```
