@@ -3,6 +3,7 @@
 ### Clonar repositorio
 ```bash
 git clone https://github.com/crishtorres/saludable_app.git
+cd saludable_app
 ```
 
 ### Instalar entorno virtual
