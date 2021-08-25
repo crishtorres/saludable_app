@@ -47,8 +47,10 @@ python manage.py runserver
 python manage.py test
 ```
 
-## Uso de la aplicación
-
-1. Registrar usuario
-2. Iniciar sesión con usuario creado
-3. "Registrar alimentos", ingresar para empezar a utilizar
+## Pantallas
+![login](https://github.com/crishtorres/saludable_app/blob/main/static/images/login.png?raw=true)
+![register](https://github.com/crishtorres/saludable_app/blob/main/static/images/register.png?raw=true)
+![dashboard](https://github.com/crishtorres/saludable_app/blob/main/static/images/dashboard.png?raw=true)
+![add_food](https://github.com/crishtorres/saludable_app/blob/main/static/images/add_food.png?raw=true)
+![add_food_2](https://github.com/crishtorres/saludable_app/blob/main/static/images/add_food2.png?raw=true)
+![drink](https://github.com/crishtorres/saludable_app/blob/main/static/images/drink.png?raw=true)
