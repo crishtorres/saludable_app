@@ -115,7 +115,7 @@ document.addEventListener(
   false
 );
 
-async function submitFormFoods(e) {
+function submitFormFoods(e) {
   if (daily_foods.length == 0) {
     setStatusMsg("No registro ningún alimento.", true);
     return;
@@ -137,8 +137,10 @@ async function submitFormFoods(e) {
     .then((data) => {
       if (data[0].status == "ok") {
         daily_foods = [];
+        $table_foods.innerHTML = ""
+        document.querySelector("#message").innerHTML = "";
+        document.querySelector("#message").style.display = "none";
         makeDrinkTemplate(data[0].drink_api.drinks[0]);
-        // location.href = "/";
       } else {
         setStatusMsg(`Ocurrió un error: ${data[0].message}`, true);
       }
@@ -231,13 +233,13 @@ function addDailyFood(e) {
   } else {
     daily_foods.push(selectedFood);
 
-    loadFailyFoodsInTable();
+    loadDailyFoodsInTable();
     setStatusMsg("Alimento añadido correctamente", false);
     $("#modalFoods").modal("hide");
   }
 }
 
-function loadFailyFoodsInTable() {
+function loadDailyFoodsInTable() {
   $table_foods.innerHTML = "";
   daily_foods.forEach((element) => {
     createElementTableFoods(element);
@@ -315,23 +317,9 @@ function setModalMsg(message) {
   modal_message.innerHTML = message;
 }
 
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== "") {
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === name + "=") {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
 function makeDrinkTemplate(data) {
   let $modal_drink_body = document.querySelector("#modal_drink_body");
+  $modal_drink_body.innerHTML = "";
 
   let row = document.createElement("div");
   let col = document.createElement("div");

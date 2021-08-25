@@ -30,6 +30,7 @@ source venv/bin/activate
 ### Instalar django y dependencias necesarias
 ```bash
 # En linux utilizar pip3
+# Posicionarse en la raiz del proyecto
 pip install -r requirements.txt
 ```
 
@@ -40,3 +41,14 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
+### Ejecutar tests
+```bash
+python manage.py test
+```
+
+## Uso de la aplicación
+
+1. Registrar usuario
+2. Iniciar sesión con usuario creado
+3. "Registrar alimentos", ingresar para empezar a utilizar
