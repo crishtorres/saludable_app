@@ -60,7 +60,7 @@ function validateForm() {
     return false;
   }
 
-  if($password != $password_c){
+  if($password.value != $password_c.value){
     setResponseMsg("Las contraseñas no coinciden", true);
     return false;
   }
