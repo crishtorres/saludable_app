@@ -11,7 +11,7 @@ class ModelsTestCase(TestCase):
     def setUp(self):
 
         # Creo un usuario
-        User.objects.create(username='demo', password='demo')
+        User.objects.create(username='demo', password='demo', first_name='Demo1', last_name='Demo2')
 
         # Obtengo ese usuario
         user = User.objects.get(pk=1)
@@ -32,6 +32,13 @@ class ModelsTestCase(TestCase):
         self.assertEqual(food.get_name_of_type(), 'Desayuno')
 
     def test_get_format_date(self):
+        # Verifico que me devuelva el formato de fecha correctamente
         food = DailyFood.objects.get(date='2021-07-20')
         self.assertEqual(food.get_format_date(), '20/07/2021')
+
+    def test_get_name_user(self):
+        # Verifico que el username y el nombre sean correctos
+        user = User.objects.get(pk=1)
+        self.assertEqual(user.username, 'demo')
+        self.assertEqual(user.first_name, 'Demo1')
 

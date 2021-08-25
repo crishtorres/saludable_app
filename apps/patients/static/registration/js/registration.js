@@ -8,7 +8,6 @@ function validateForm() {
   const $dni = document.querySelector("#dni");
   const $gender = document.querySelector("#gender");
   const $date_of_birth = document.querySelector("#date_of_birth");
-
   const $location = document.querySelector("#location");
   const $treatment = document.querySelector("#treatment");
   const $password = document.querySelector("#password");
