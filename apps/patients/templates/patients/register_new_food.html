@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% load static %} {% load custom_tags %}
+{% block title %} Registrar nuevo alimento {% endblock %}
+{% block navbar %} 
+{% include 'navbar.html' %} {%endblock %} {% block content %}
+
+<h3>Nuevo registro de alimentos</h3>
+
+<button type="button" class="btn btn-primary" id="btn_open_modal">Añadir alimentos</button>
+
+<div class="row">
+  <div class="col-md-12">
+    <div id="message" class="alert" role="alert"></div>
+
+    <small
+      >Presione añadir alimentos para empezar a agregar sus comidas diarias. Una vez que cargue
+      todas, presione grabar.</small
+    >
+    <div class="table-responsive">
+      <table class="table table-bordered" id="table_foods">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo de comida</th>
+            <th>Principal</th>
+            <th>Secundaria</th>
+            <th>Bebida</th>
+            <th>¿Ingirió postre?</th>
+            <th>Postre</th>
+            <th>¿Tuvo Tentación?</th>
+            <th>Alimento</th>
+            <th>¿Insatisfecho?</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody id="table_foods_body">
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 pt-10">
+    <button type="submit" class="btn btn-success" id="btn_submit_food">Grabar</button>
+  </div>
+</div>
+
+{% include 'patients/modal.html' %} {% include 'patients/modal_drink.html' %} {% endblock %} {% block styles_css %}
+<link rel="stylesheet" href="{% static 'patients/css/patients.css' %}" />
+{% endblock styles_css %} {% block scripts_js %}
+<script src="{% static 'patients/js/patients.js' %}"></script>
+
+{% if foods %}
+<script>
+  is_edit = true;
+  date_edit = '{{ date_edit }}';
+
+  {% for food in foods %}
+
+      food = {
+        type: '{{ food.kind_of_food }}',
+        name: '{{ food.get_name_of_type }}',
+        primary_food: '{{ food.primary_food }}',
+        secondary_food: '{{ food.secondary_food }}',
+        drink: '{{ food.drink }}',
+        afters: '{{ food.afters }}',
+        afters_name: '{{ food.afters_name }}',
+        tentation: '{{ food.tentation }}',
+        tentation_name: '{{ food.tentation_name }}',
+        was_hungry: '{{ food.was_hungry }}',
+        date_register: '{{ food.get_js_format_date }}'
+      }
+
+      daily_foods.push(food)
+
+  {% endfor %}
+
+  loadFailyFoodsInTable()
+</script>
+{% endif %} {% endblock scripts_js %}

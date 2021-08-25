@@ -1,0 +1,131 @@
+<div
+  class="modal fade"
+  id="modalFoods"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir nuevo alimento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="modal_message" class="alert alert-danger" role="alert"></div>
+          </div>
+        </div>
+
+        <form method="POST" action="{% url 'Patients:register_food' %}">
+          {% csrf_token %} {{ form.non_field_errors }}
+
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <div class="fieldWrapper">
+                {{ form.date.errors }}
+                <label for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
+                <input id="id_date" class="form-control" type="date" value="{{ form.date.value }}" />
+              </div>
+
+              
+              <div class="fieldWrapper">
+                {{ form.kind_of_food.errors }}
+                <label for="{{ form.kind_of_food.id_for_label }}"
+                  >{{ form.kind_of_food.label }}</label
+                >
+                {{ form.kind_of_food }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.primary_food.errors }}
+                <label for="{{ form.primary_food.id_for_label }}"
+                  >{{ form.primary_food.label }}</label
+                >
+                {{ form.primary_food }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.secondary_food.errors }}
+                <label for="{{ form.secondary_food.id_for_label }}"
+                  >{{ form.secondary_food.label }}</label
+                >
+                {{ form.secondary_food }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.drink.errors }}
+                <label for="{{ form.drink.id_for_label }}">{{ form.drink.label }}</label>
+                {{ form.drink }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.afters.errors }}
+                <label for="{{ form.afters.id_for_label }}">{{ form.afters.label }}</label>
+                {{ form.afters }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.afters_name.errors }}
+                <label for="{{ form.afters_name.id_for_label }}"
+                  >{{ form.afters_name.label }}</label
+                >
+                {{ form.afters_name }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.tentation.errors }}
+                <label for="{{ form.tentation.id_for_label }}">{{ form.tentation.label }}</label>
+                {{ form.tentation }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.tentation_name.errors }}
+                <label for="{{ form.tentation_name.id_for_label }}"
+                  >{{ form.tentation_name.label }}</label
+                >
+                {{ form.tentation_name }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="fieldWrapper">
+                {{ form.was_hungry.errors }}
+                <label for="{{ form.was_hungry.id_for_label }}">{{ form.was_hungry.label }}</label>
+                {{ form.was_hungry }}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="add_daily_food">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>

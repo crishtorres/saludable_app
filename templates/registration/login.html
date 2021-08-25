@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4">
+    <br />
+    {% if 'status' in request.GET %}
+    <div class="alert alert-success">Usuario creado con éxito</div>
+    {% endif %}
+    <h2>Inicio de sesión</h2>
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="username">Usuario:</label>
+        <input
+          type="text"
+          name="username"
+          maxlength="150"
+          required
+          id="id_username"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+
+        <input type="password" name="password" required id="id_password" class="form-control" />
+      </div>
+
+      <button type="submit" class="btn btn-primary form-control">Ingresar</button>
+    </form>
+    <br />
+    <a href="/register">¿No esta registrado? Registrese aquí</a>
+  </div>
+</div>
+
+{% endblock %}

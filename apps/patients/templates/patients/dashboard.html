@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% load static %} {% load custom_tags %} 
+
+{% block title %} Dashboard {% endblock %}
+{% block navbar %} {% include 'navbar.html' %} {%endblock %} {% block content %}
+
+<h3>Dashboard</h3>
+
+<small>Aquí verá un detalle de las comidas agregadas en cada día.</small>
+{% if foods %}
+  {% for food in foods %}
+  <button class="accordion">{{ food.date }}</button>
+  <div class="panel">
+    <a href="/register_food?date={{ food.date|replace_char_date }}">Editar</a>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Principal</th>
+          <th>Secundaria</th>
+          <th>Bebida</th>
+          <th>Postre</th>
+          <th>Tentación</th>
+          <th>Insatisfecho</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for type in food.foods %}
+
+        <tr>
+          <td>{{ type.name }}</td>
+          <td>{{ type.primary_food }}</td>
+          <td>{{ type.secondary_food }}</td>
+          <td>{{ type.drink }}</td>
+          <td>{{ type.afters_name }}</td>
+          <td>{{ type.tentation_name }}</td>
+          <td>{{ type.get_was_hungry }}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <br><br>
+  <a class="btn btn-success" href="{% url 'Patients:register_food' %}">Registrar Comida</a>
+{% endif %}
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+</script>
+
+{% endblock %} {% block styles_css %}
+<link rel="stylesheet" href="{% static 'patients/css/patients.css' %}" />
+{% endblock styles_css %}
